@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MIXIE GENERATOR</title>
+    <style>
+        .container { width: 375px; height: 780px; position: relative; background: #CEBC13; margin: 0 auto; }
+        .generate-btn { width: 243px; height: 52px; left: 73px; top: 381px; position: absolute; }
+        .rectangle-btn { width: 243px; height: 52px; background: #1E1E18; border-radius: 10px; }
+        .generate-text { left: 25px; top: 6px; position: absolute; color: #E1D024; font-size: 26px; font-family: Poppins; font-weight: 900; cursor: pointer; }
+        .nft-frame { width: 298px; height: 252px; left: 44px; top: 96px; position: absolute; box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.10); border-radius: 20px; overflow: hidden; }
+        .nft-image { width: 100%; height: 100%; object-fit: cover; } /* Changed to cover to fill frame */
+        .title { width: 250px; height: 36px; left: 98px; top: 31px; position: absolute; color: black; font-size: 26px; font-family: Poppins; font-weight: 900; }
+        .logo { width: 46px; height: 46px; left: 43px; top: 28px; position: absolute; border-radius: 10px; }
+        .traits-container { width: 298px; height: 212px; left: 39px; top: 485px; position: absolute; background: linear-gradient(180deg, #2A1212 0%, #4F4F4F 100%); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px; overflow-y: auto; color: white; padding: 10px; }
+        .traits-container ul { list-style: none; padding: 0; }
+        .traits-container li { margin: 5px 0; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="title">MIXIE GENERATOR</div>
+        <img class="logo" src="https://drive.google.com/file/d/1dQlKMFcIDm7AeO7xuAEbaR4UqDtQZNH6/view?usp=drive_link" alt="Logo" />
+        <div class="nft-frame" id="Rectangle2">
+            <img class="nft-image" id="nftImage" src="{{ url_for('static', filename='placeholder.jpg') }}" alt="NFT Placeholder" />
+        </div>
+        <div class="generate-btn">
+            <div class="rectangle-btn" id="generateBtn" onclick="generateNFT()">
+                <div class="generate-text">GENERATE NFT</div>
+            </div>
+        </div>
+        <div class="traits-container" id="Traits">
+            <ul></ul>
+        </div>
+        {% if has_generated and host_type == 'normal' %}
+            <p style="position: absolute; left: 39px; top: 710px; color: white; font-family: Poppins; font-size: 16px;">You have already generated your unique NFT. Only one NFT per user is allowed.</p>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
